@@ -30,12 +30,6 @@
   These will be loaded via next/font in layout.tsx
 */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -140,14 +134,6 @@ pre code {
   }
 }
 
-/* Smooth Transitions for Theme Elements */
-.surface {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-2xl);
-  transition: all 0.2s ease;
-}
-
 /* Loading States */
 .loading-pulse {
   animation: pulse 1.5s ease-in-out infinite;
@@ -175,18 +161,5 @@ pre code {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* Responsive Typography */
-@media (max-width: 640px) {
-  h1 {
-    font-size: 2rem;
-  }
-  h2 {
-    font-size: 1.75rem;
-  }
-  h3 {
-    font-size: 1.25rem;
   }
 }
