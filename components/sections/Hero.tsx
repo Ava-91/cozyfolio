@@ -6,48 +6,72 @@ import Button from "@/components/ui/Button";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 pt-20 pb-16">
-      <div className="container max-w-4xl">
+    <section className="relative min-h-screen flex items-center justify-center px-4 pt-24 pb-16 overflow-hidden">
+      <div className="container max-w-5xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           className="text-center"
         >
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-surface/50 text-xs text-muted mb-6">
+          {/* Status */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-surface/50 text-xs text-muted mb-8">
             <span className="text-primary">●</span>
-            Available for work
+            Currently building cozy things on the internet
           </div>
 
-          {/* Name */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold text-text tracking-tight mb-4">
-            Hi, I'm <span className="text-primary">Ava</span>
+          {/* Heading */}
+
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight leading-tight">
+            Hi, I'm{" "}
+            <span className="text-primary">
+              Ava
+            </span>
           </h1>
 
-          {/* Title */}
-          <p className="text-xl md:text-2xl text-muted mb-6">
-            Full-stack developer & UI/UX enthusiast
+          <p className="mt-6 text-xl md:text-2xl text-muted">
+            Frontend-first developer building calm, minimal and thoughtful web
+            experiences.
           </p>
 
-          {/* Description */}
-          <p className="text-base md:text-lg text-muted max-w-2xl mx-auto mb-10">
-            I build clean, performant, and accessible web experiences.
-            Passionate about minimal design and thoughtful interactions.
+          <p className="mt-8 max-w-2xl mx-auto text-base md:text-lg text-muted leading-8">
+            I'm passionate about crafting interfaces that feel clean, modern and
+            enjoyable to use. Currently exploring Next.js, TypeScript, React and
+            building projects one commit at a time.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
             <Link href="#projects">
               <Button variant="primary" size="lg">
                 View Projects
               </Button>
             </Link>
-            <Link href="#contact">
+
+            <Link href="#about">
               <Button variant="ghost" size="lg">
-                Get in touch
+                About Me
               </Button>
             </Link>
+          </div>
+
+          {/* Small info */}
+
+          <div className="mt-12 flex flex-wrap justify-center gap-3 text-sm">
+            <span className="rounded-full border border-border bg-surface/40 px-3 py-1 text-muted">
+                Next.js
+            </span>
+
+            <span className="rounded-full border border-border bg-surface/40 px-3 py-1 text-muted">
+                TypeScript
+            </span>
+
+            <span className="rounded-full border border-border bg-surface/40 px-3 py-1 text-muted">
+                Tailwind CSS
+            </span>
+
+            <span className="rounded-full border border-border bg-surface/40 px-3 py-1 text-muted">
+                React
+            </span>
           </div>
         </motion.div>
       </div>

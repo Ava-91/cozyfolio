@@ -1,51 +1,64 @@
 "use client";
 
 import { motion } from "framer-motion";
-import SectionTitle from "@/components/ui/SectionTitle";
 import Card from "@/components/ui/Card";
+import SectionTitle from "@/components/ui/SectionTitle";
 
 const About = () => {
   return (
-    <section id="about" className="py-20 px-4">
+    <section id="about" className="py-24 px-4">
       <div className="container max-w-4xl">
-        <SectionTitle align="left">
+        <SectionTitle
+          subtitle="A little about the person behind the commits."
+          align="left"
+        >
           About <span className="text-primary">Me</span>
         </SectionTitle>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
         >
-          <Card className="space-y-4">
-            <p className="text-text leading-relaxed">
-              I'm a full-stack developer with a passion for creating clean,
-              minimal, and user-friendly digital experiences. With a background
-              in both design and development, I bridge the gap between
-              aesthetics and functionality.
+          <Card className="space-y-6">
+            <p className="leading-8 text-text">
+              Hi! I'm Ava, a student and aspiring full-stack developer who loves
+              building websites that feel clean, cozy and enjoyable to use. I
+              spend most of my free time experimenting with new technologies,
+              improving old projects and learning something new every day.
             </p>
-            <p className="text-text leading-relaxed">
-              Currently focused on building web applications with Next.js,
-              TypeScript, and Tailwind CSS. I believe in writing clean code,
-              thoughtful design, and creating products that people love to use.
+
+            <p className="leading-8 text-text">
+              My coding journey started with simple visual programming and later
+              grew into HTML, CSS and JavaScript. Today I'm focused on React,
+              Next.js, TypeScript and creating interfaces that balance good
+              design with solid code.
             </p>
+
+            <p className="leading-8 text-text">
+              Outside of programming you'll usually find me listening to music,
+              customizing my development setup, organizing GitHub repositories,
+              or turning random ideas into little side projects.
+            </p>
+
             <div className="flex flex-wrap gap-2 pt-2">
-              <span className="text-xs text-muted bg-surface/50 px-3 py-1 rounded-full border border-border">
-                Next.js
-              </span>
-              <span className="text-xs text-muted bg-surface/50 px-3 py-1 rounded-full border border-border">
-                TypeScript
-              </span>
-              <span className="text-xs text-muted bg-surface/50 px-3 py-1 rounded-full border border-border">
-                Tailwind CSS
-              </span>
-              <span className="text-xs text-muted bg-surface/50 px-3 py-1 rounded-full border border-border">
-                React
-              </span>
-              <span className="text-xs text-muted bg-surface/50 px-3 py-1 rounded-full border border-border">
-                Node.js
-              </span>
+              {[
+                "Next.js",
+                "TypeScript",
+                "React",
+                "Tailwind CSS",
+                "WordPress",
+                "UI Design",
+                "Git & GitHub",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-border bg-surface/50 px-3 py-1 text-xs text-muted"
+                >
+                  {item}
+                </span>
+              ))}
             </div>
           </Card>
         </motion.div>

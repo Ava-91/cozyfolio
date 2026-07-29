@@ -13,8 +13,5 @@ export const siteConfig: SiteConfig = {
   location: "Iran",
 
   github: "https://github.com/Ava-91",
-
-  telegram: "https://t.me/Ava_talks",
-
   email: "hello@example.com",
 };

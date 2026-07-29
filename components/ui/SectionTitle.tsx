@@ -15,30 +15,38 @@ const SectionTitle = ({
   className,
 }: SectionTitleProps) => {
   const alignClasses = {
-    left: "text-left",
-    center: "text-center",
-    right: "text-right",
-  };
-
-  const subtitleAlign = {
-    left: "",
-    center: "mx-auto",
-    right: "ml-auto",
+    left: "items-start text-left",
+    center: "items-center text-center",
+    right: "items-end text-right",
   };
 
   return (
-    <div className={cn("space-y-3", alignClasses[align], className)}>
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-text tracking-tight">
-        <span className="inline-flex items-center gap-3">
-          <span className="text-primary text-2xl md:text-3xl lg:text-4xl">●</span>
-          {children}
+    <div
+      className={cn(
+        "flex flex-col gap-4 mb-14",
+        alignClasses[align],
+        className
+      )}
+    >
+      {/* Accent */}
+
+      <div className="flex items-center gap-3">
+        <span className="h-2 w-2 rounded-full bg-primary" />
+        <span className="text-xs uppercase tracking-[0.25em] text-muted">
+          Section
         </span>
+      </div>
+
+      {/* Title */}
+
+      <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-text leading-none">
+        {children}
       </h2>
+
+      {/* Subtitle */}
+
       {subtitle && (
-        <p className={cn(
-          "text-muted text-base md:text-lg max-w-2xl",
-          subtitleAlign[align]
-        )}>
+        <p className="max-w-2xl text-base md:text-lg leading-8 text-muted">
           {subtitle}
         </p>
       )}

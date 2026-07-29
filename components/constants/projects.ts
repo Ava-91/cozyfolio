@@ -5,7 +5,7 @@ export const projects: Project[] = [
     title: "Music Player",
     description:
       "A modern music player with playlists, progress controls, and a polished UI built using Next.js.",
-    image: "/images/projects/musicplayer.png",
+    image: "/images/musicplayer.png",
     tags: ["Next.js", "React", "TypeScript"],
     githubUrl: "https://github.com/Ava-91/MusicPlayer",
     liveUrl: "",
@@ -14,7 +14,7 @@ export const projects: Project[] = [
     title: "Ava night",
     description:
         "A sleek Visual Studio Code theme with balanced contrast, calm colors, and a cozy dark aesthetic designed for long coding sessions.",
-    image: "/images/projects/ava-night.png",
+    image: "/images/ava-night.png",
     tags: ["React", "Context API", "JavaScript"],
     githubUrl: "https://github.com/Ava-91/ava-night",
     liveUrl: "",

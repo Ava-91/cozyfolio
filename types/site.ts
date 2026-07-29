@@ -7,6 +7,5 @@ export interface SiteConfig {
   location: string;
 
   github: string;
-  telegram: string;
   email: string;
 }
