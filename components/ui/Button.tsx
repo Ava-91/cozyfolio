@@ -1,9 +1,11 @@
+// components/ui/Button.tsx
 import { ButtonHTMLAttributes, forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "ghost";
   size?: "md" | "lg";
+  fullWidth?: boolean;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -13,6 +15,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       variant = "primary",
       size = "md",
+      fullWidth = false,
       disabled,
       ...props
     },
@@ -40,6 +43,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           baseStyles,
           variants[variant],
           sizes[size],
+          fullWidth && "w-full",
           className
         )}
         disabled={disabled}
@@ -53,4 +57,4 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 Button.displayName = "Button";
 
-export { Button };
+export default Button;
