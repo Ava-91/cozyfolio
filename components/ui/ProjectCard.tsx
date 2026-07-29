@@ -4,7 +4,7 @@ import { ExternalLink } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { cn } from "@/lib/utils";
 import Badge from "./Badge";
-import { Button } from "./Button";
+import Button from "./Button";
 
 export interface ProjectCardProps {
   title: string;
@@ -89,8 +89,8 @@ const ProjectCard = ({
             <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
               <Button variant="ghost" size="md">
                 <SiGithub className="h-4 w-4" />
-                    code
-                </Button>
+                Code
+              </Button>
             </Link>
           )}
         </div>
