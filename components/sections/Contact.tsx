@@ -4,36 +4,61 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Send } from "lucide-react";
 import { SiTelegram, SiGithub } from "@icons-pack/react-simple-icons";
+
 import SectionTitle from "@/components/ui/SectionTitle";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import { socials } from "../constants/socials";
 
 const Contact = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+const [name, setName] = useState("");
+const [email, setEmail] = useState("");
+const [message, setMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
+const [isSubmitting, setIsSubmitting] = useState(false);
+const [isSubmitted, setIsSubmitted] = useState(false);
+const [error, setError] = useState("");
+
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  setIsSubmitting(true);
+  setError("");
+
+  try {
+    const response = await fetch("https://formspree.io/f/mwvgzdqo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        message,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to send message.");
+    }
+
+    setIsSubmitted(true);
+
+    setName("");
+    setEmail("");
+    setMessage("");
+
     setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setName("");
-      setEmail("");
-      setMessage("");
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    }, 1000);
-  };
+      setIsSubmitted(false);
+    }, 5000);
+  } catch (err) {
+    console.error(err);
+    setError("Something went wrong. Please try again later.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   // Find social links
   const githubSocial = socials.find(s => s.icon === "github");
@@ -103,66 +128,80 @@ const Contact = () => {
 
               {/* Form */}
               <form onSubmit={handleSubmit} className="md:col-span-3 space-y-4">
-                {isSubmitted ? (
-                  <div className="p-4 rounded-xl bg-success/10 border border-success/20 text-success text-sm">
-                    ✨ Thanks for reaching out! I'll get back to you soon.
+                {isSubmitted && (
+                  <div className="rounded-xl border border-green-500/20 bg-green-500/10 p-4 text-sm text-green-400">
+                    ✨ Thanks! Your message has been sent successfully.
                   </div>
-                ) : (
-                  <>
-                    <div>
-                      <label htmlFor="name" className="sr-only">
-                        Name
-                      </label>
-                      <input
-                        id="name"
-                        type="text"
-                        placeholder="Your name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                        className="w-full px-4 py-2.5 bg-background border border-border rounded-xl text-text placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="sr-only">
-                        Email
-                      </label>
-                      <input
-                        id="email"
-                        type="email"
-                        placeholder="Your email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        className="w-full px-4 py-2.5 bg-background border border-border rounded-xl text-text placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="message" className="sr-only">
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        placeholder="Your message"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        required
-                        rows={4}
-                        className="w-full px-4 py-2.5 bg-background border border-border rounded-xl text-text placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200 resize-none"
-                      />
-                    </div>
-                    <Button
-                      type="submit"
-                      variant="primary"
-                      size="lg"
-                      fullWidth
-                      disabled={isSubmitting}
-                    >
-                      <Send className="w-4 h-4" />
-                      {isSubmitting ? "Sending..." : "Send message"}
-                    </Button>
-                  </>
                 )}
+
+                {error && (
+                  <div className="rounded-xl border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-400">
+                    {error}
+                  </div>
+                )}
+
+                <div>
+                  <label htmlFor="name" className="sr-only">
+                    Name
+                  </label>
+
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="Your name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    className="w-full rounded-xl border border-border bg-background px-4 py-3 text-text placeholder-muted transition-all duration-200 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="sr-only">
+                    Email
+                  </label>
+
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="w-full rounded-xl border border-border bg-background px-4 py-3 text-text placeholder-muted transition-all duration-200 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="sr-only">
+                    Message
+                  </label>
+
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Your message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    required
+                    rows={5}
+                    className="w-full resize-none rounded-xl border border-border bg-background px-4 py-3 text-text placeholder-muted transition-all duration-200 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  variant="primary"
+                  size="lg"
+                  fullWidth
+                  disabled={isSubmitting}
+                >
+                  <Send className="h-4 w-4" />
+
+                  {isSubmitting ? "Sending..." : "Send message"}
+                </Button>
               </form>
             </div>
           </Card>
