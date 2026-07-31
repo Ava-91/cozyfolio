@@ -164,7 +164,7 @@ const Navbar = () => {
         id="mobile-menu"
         className={cn(
           "overflow-hidden transition-all duration-300 md:hidden",
-          isOpen ? "max-h-[500px]" : "max-h-0"
+          isOpen ? "max-h-125" : "max-h-0"
         )}
       >
         <div className="container pb-5">
