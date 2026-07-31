@@ -1,118 +1,203 @@
 @import "tailwindcss";
 
+/* ===========================
+   Theme
+=========================== */
+
 @theme {
   /* Colors */
-  --color-background: #0D1117;
-  --color-surface: #161B22;
-  --color-border: #30363D;
-  --color-primary: #58A6FF;
-  --color-primary-hover: #79C0FF;
-  --color-text: #E6EDF3;
-  --color-muted: #8B949E;
-  --color-success: #3FB950;
-  --color-danger: #F85149;
+  --color-background: #0d1117;
+  --color-surface: #161b22;
+  --color-surface-hover: #1f2630;
+  --color-border: #30363d;
 
-  /* Font Families */
-  --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "Geist Mono", "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+  --color-primary: #58a6ff;
+  --color-primary-hover: #79c0ff;
 
-  /* Spacing */
-  --spacing: 0.25rem;
+  --color-text: #e6edf3;
+  --color-muted: #8b949e;
 
-  /* Border Radius */
-  --radius-xl: 0.75rem;
-  --radius-2xl: 1rem;
+  --color-success: #3fb950;
+  --color-danger: #f85149;
+  --color-warning: #d29922;
+
+  /* Fonts */
+  --font-sans:
+    "Geist",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  --font-mono:
+    "Geist Mono",
+    "SF Mono",
+    "Fira Code",
+    monospace;
+
+  /* Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 10px rgb(0 0 0 / 0.15);
+  --shadow-md: 0 10px 30px rgb(0 0 0 / 0.25);
+  --shadow-lg: 0 25px 50px rgb(0 0 0 / 0.35);
+
+  /* Layout */
+  --container-width: 1280px;
+
+  /* Timing */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
 }
 
-/*
-  Geist Font Loading
-  Using Next.js font optimization instead of @font-face
-  These will be loaded via next/font in layout.tsx
-*/
+/* ===========================
+   Base
+=========================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background-color: var(--color-background);
-  color: var(--color-text);
-  font-family: var(--font-sans);
-  line-height: 1.6;
   min-height: 100vh;
   min-height: 100dvh;
-}
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
   background: var(--color-background);
+  color: var(--color-text);
+
+  font-family: var(--font-sans);
+  line-height: 1.65;
+
+  text-rendering: optimizeLegibility;
+
+  overflow-x: hidden;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: var(--radius-xl);
+/* ===========================
+   Typography
+=========================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-muted);
+p {
+  color: var(--color-text);
 }
 
-/* Focus States */
-*:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-  border-radius: 0.25rem;
-}
-
-/* Selection */
 ::selection {
   background: var(--color-primary);
   color: var(--color-background);
 }
 
-/* Base Link Styles */
+/* ===========================
+   Links
+=========================== */
+
 a {
-  color: var(--color-primary);
+  color: inherit;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition:
+    color var(--transition-fast),
+    opacity var(--transition-fast);
 }
 
 a:hover {
-  color: var(--color-primary-hover);
+  color: var(--color-primary);
 }
 
-/* Heading Styles */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+/* ===========================
+   Inputs
+=========================== */
+
+input,
+textarea,
+button {
+  font: inherit;
 }
 
-/* Code Blocks */
+button {
+  cursor: pointer;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-muted);
+}
+
+/* ===========================
+   Focus
+=========================== */
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* ===========================
+   Images
+=========================== */
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* ===========================
+   Code
+=========================== */
+
 code {
   font-family: var(--font-mono);
-  font-size: 0.9em;
+
   background: var(--color-surface);
-  padding: 0.2rem 0.4rem;
-  border-radius: 0.25rem;
+
+  padding: 0.2rem 0.45rem;
+
   border: 1px solid var(--color-border);
+  border-radius: 6px;
+
+  font-size: 0.88em;
 }
 
 pre {
-  font-family: var(--font-mono);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
-  padding: 1rem;
   overflow-x: auto;
+
+  padding: 1rem;
+
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+
+  background: var(--color-surface);
 }
 
 pre code {
@@ -121,45 +206,148 @@ pre code {
   padding: 0;
 }
 
-/* Utility Classes */
+/* ===========================
+   Scrollbar
+=========================== */
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Firefox */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+/* ===========================
+   Container
+=========================== */
+
 .container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+  width: 100%;
+  max-width: var(--container-width);
+
+  margin-inline: auto;
+
+  padding-inline: 1.5rem;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .container {
-    padding: 0 1rem;
+    padding-inline: 1rem;
   }
 }
 
-/* Loading States */
+/* ===========================
+   Utilities
+=========================== */
+
+.surface {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.glass {
+  backdrop-filter: blur(14px);
+  background: rgb(22 27 34 / 0.7);
+}
+
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-primary-hover)
+  );
+
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* ===========================
+   Animations
+=========================== */
+
+.animate-fade {
+  animation: fade 0.5s ease forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease forwards;
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
 .loading-pulse {
-  animation: pulse 1.5s ease-in-out infinite;
+  animation: pulse 1.4s infinite;
 }
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-/* Fade In Animation */
-.animate-fade-in {
-  animation: fadeIn 0.4s ease forwards;
-}
-
-@keyframes fadeIn {
+@keyframes fade {
   from {
     opacity: 0;
-    transform: translateY(8px);
   }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* ===========================
+   Reduced Motion
+=========================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
   }
 }
