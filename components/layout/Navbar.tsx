@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Mail } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { links } from "@/components/constants/links";
@@ -16,6 +16,7 @@ const Navbar = () => {
 
   const closeMenu = () => setIsOpen(false);
 
+  // Prevent body scrolling while mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
 
@@ -24,22 +25,23 @@ const Navbar = () => {
     };
   }, [isOpen]);
 
+  // Scroll detection + active section
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 24);
 
-      const sections = links
-        .map((link) => document.querySelector(link.href))
-        .filter(Boolean) as HTMLElement[];
+      const scrollPosition = window.scrollY + 140;
 
-      const scrollPosition = window.scrollY + 120;
+      for (const link of links) {
+        const section = document.querySelector(link.href) as HTMLElement | null;
 
-      for (const section of sections) {
+        if (!section) continue;
+
         if (
           scrollPosition >= section.offsetTop &&
           scrollPosition < section.offsetTop + section.offsetHeight
         ) {
-          setActiveSection(`#${section.id}`);
+          setActiveSection(link.href);
         }
       }
     };
@@ -51,6 +53,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close with Escape
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeMenu();
@@ -65,9 +68,8 @@ const Navbar = () => {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "border-b border-border/70 bg-background/75 backdrop-blur-xl shadow-lg shadow-black/5"
-          : "bg-transparent"
+        isScrolled &&
+          "border-b border-border/60 bg-background/75 backdrop-blur-xl shadow-lg shadow-black/5"
       )}
     >
       <nav
@@ -79,45 +81,53 @@ const Navbar = () => {
         <Link
           href="/"
           onClick={closeMenu}
-          className="group flex items-center gap-2 text-xl font-semibold tracking-tight"
+          className="group flex items-center gap-3"
         >
-          <span className="h-2.5 w-2.5 rounded-full bg-primary transition-all duration-300 group-hover:scale-150" />
+          <span className="h-2.5 w-2.5 rounded-full bg-primary transition-all duration-300 group-hover:scale-150 group-hover:shadow-[0_0_14px_var(--color-primary)]" />
 
-          <span className="transition-colors duration-300 group-hover:text-primary">
-            Ava
-          </span>
+          <div className="leading-none">
+            <h2 className="text-lg font-semibold tracking-tight transition-colors duration-300 group-hover:text-primary">
+              Ava
+            </h2>
+
+            <p className="hidden text-xs text-muted lg:block">
+              building cozy internet things ✨
+            </p>
+          </div>
         </Link>
 
-        {/* Desktop */}
+        {/* Desktop Navigation */}
 
-        <ul className="hidden items-center gap-8 md:flex">
-          {links.map((link: NavLink) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                aria-current={
-                  activeSection === link.href ? "page" : undefined
-                }
-                className={cn(
-                  "relative text-sm transition-colors duration-200",
-                  activeSection === link.href
-                    ? "text-primary"
-                    : "text-muted hover:text-text"
-                )}
-              >
-                {link.label}
+        <ul className="hidden items-center gap-7 md:flex">
+          {links.map((link: NavLink) => {
+            const active = activeSection === link.href;
 
-                <span
+            return (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  aria-current={active ? "page" : undefined}
                   className={cn(
-                    "absolute -bottom-1 left-0 h-0.5 rounded-full bg-primary transition-all duration-300",
-                    activeSection === link.href
-                      ? "w-full"
-                      : "w-0 group-hover:w-full"
+                    "group relative flex items-center gap-2 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5",
+                    active
+                      ? "text-primary"
+                      : "text-muted hover:text-text"
                   )}
-                />
-              </Link>
-            </li>
-          ))}
+                >
+                  <span
+                    className={cn(
+                      "h-1.5 w-1.5 rounded-full bg-primary transition-all duration-300",
+                      active
+                        ? "scale-100 opacity-100"
+                        : "scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100"
+                    )}
+                  />
+
+                  {link.label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Desktop CTA */}
@@ -125,65 +135,80 @@ const Navbar = () => {
         <div className="hidden md:block">
           <Link href="#contact">
             <Button variant="primary" size="md">
-              Hire Me
+              <Mail className="h-4 w-4" />
+              Say hi ✨
             </Button>
           </Link>
         </div>
 
-        {/* Mobile Button */}
+        {/* Mobile Toggle */}
 
         <button
           onClick={() => setIsOpen((prev) => !prev)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
-          className="rounded-lg p-2 transition-colors hover:bg-surface md:hidden"
+          className="rounded-xl border border-border bg-surface/40 p-2 transition-all duration-200 hover:bg-surface md:hidden"
         >
           {isOpen ? (
-            <X className="h-6 w-6" />
+            <X className="h-5 w-5" />
           ) : (
-            <Menu className="h-6 w-6" />
+            <Menu className="h-5 w-5" />
           )}
         </button>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Navigation */}
 
       <div
         id="mobile-menu"
         className={cn(
           "overflow-hidden transition-all duration-300 md:hidden",
-          isOpen
-            ? "max-h-screen border-t border-border bg-background/95 backdrop-blur-xl"
-            : "max-h-0"
+          isOpen ? "max-h-[500px]" : "max-h-0"
         )}
       >
-        <ul className="container flex flex-col gap-2 py-6">
-          {links.map((link: NavLink) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                onClick={closeMenu}
-                className={cn(
-                  "block rounded-xl px-4 py-3 transition-colors",
-                  activeSection === link.href
-                    ? "bg-primary/10 text-primary"
-                    : "text-text hover:bg-surface"
-                )}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
+        <div className="container pb-5">
+          <div className="rounded-3xl border border-border bg-surface/90 p-5 shadow-2xl backdrop-blur-xl">
+            <ul className="space-y-2">
+              {links.map((link: NavLink) => {
+                const active = activeSection === link.href;
 
-          <li className="pt-4">
-            <Link href="#contact" onClick={closeMenu}>
-              <Button variant="primary" size="lg" fullWidth>
-                Hire Me
-              </Button>
-            </Link>
-          </li>
-        </ul>
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      onClick={closeMenu}
+                      className={cn(
+                        "flex items-center gap-3 rounded-xl px-4 py-3 transition-all duration-200",
+                        active
+                          ? "bg-primary/10 text-primary"
+                          : "text-text hover:bg-background"
+                      )}
+                    >
+                      <span
+                        className={cn(
+                          "h-2 w-2 rounded-full bg-primary",
+                          active ? "opacity-100" : "opacity-0"
+                        )}
+                      />
+
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <div className="mt-5">
+              <Link href="#contact" onClick={closeMenu}>
+                <Button variant="primary" size="lg" fullWidth>
+                  <Mail className="h-4 w-4" />
+                  Say hi ✨
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
   );
