@@ -23,8 +23,8 @@ export default function Home() {
             absolute
             left-1/2
             top-0
-            h-[500px]
-            w-[500px]
+            h-125
+            w-125
             -translate-x-1/2
             rounded-full
             bg-primary/10
@@ -36,10 +36,10 @@ export default function Home() {
         <div
           className="
             absolute
-            right-[-150px]
+            -right-37.5
             top-[40%]
-            h-[400px]
-            w-[400px]
+            h-100
+            w-100
             rounded-full
             bg-primary/5
             blur-[100px]
