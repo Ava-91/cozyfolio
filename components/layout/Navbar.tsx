@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { Menu, X, Mail } from "lucide-react";
 
@@ -27,22 +28,38 @@ const Navbar = () => {
 
   // Scroll detection + active section
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 24);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 24);
 
-      const scrollPosition = window.scrollY + 140;
+          const scrollPosition = window.scrollY + 160;
 
-      for (const link of links) {
-        const section = document.querySelector(link.href) as HTMLElement | null;
+          for (const link of links) {
+            const section = document.querySelector(
+              link.href
+            ) as HTMLElement | null;
 
-        if (!section) continue;
+            if (!section) continue;
 
-        if (
-          scrollPosition >= section.offsetTop &&
-          scrollPosition < section.offsetTop + section.offsetHeight
-        ) {
-          setActiveSection(link.href);
-        }
+            const start = section.offsetTop;
+            const end = start + section.offsetHeight;
+
+            if (
+              scrollPosition >= start &&
+              scrollPosition < end
+            ) {
+              setActiveSection(link.href);
+              break;
+            }
+          }
+
+          ticking = false;
+        });
+
+        ticking = true;
       }
     };
 
@@ -50,9 +67,9 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () =>
+      window.removeEventListener("scroll", handleScroll);
   }, []);
-
   // Close with Escape
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -179,20 +196,36 @@ const Navbar = () => {
                       href={link.href}
                       onClick={closeMenu}
                       className={cn(
-                        "flex items-center gap-3 rounded-xl px-4 py-3 transition-all duration-200",
+                      "group relative flex items-center gap-2 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5",
                         active
                           ? "bg-primary/10 text-primary"
                           : "text-text hover:bg-background"
                       )}
                     >
-                      <span
-                        className={cn(
-                          "h-2 w-2 rounded-full bg-primary",
-                          active ? "opacity-100" : "opacity-0"
-                        )}
-                      />
+                      {active && (
+                        <motion.span
+                          layoutId="active-nav-dot"
+                          className="h-1.5 w-1.5 rounded-full bg-primary"
+                          transition={{
+                            type: "spring",
+                            stiffness: 350,
+                            damping: 25,
+                          }}
+                        />
+                      )}
 
                       {link.label}
+                      {active && (
+                        <motion.span
+                          layoutId="active-nav-line"
+                          className="absolute -bottom-2 left-0 right-0 h-0.5 rounded-full bg-primary"
+                          transition={{
+                            type: "spring",
+                            stiffness: 300,
+                            damping: 30,
+                          }}
+                        />
+                      )}
                     </Link>
                   </li>
                 );
