@@ -15,5 +15,10 @@ export interface Skill {
   name: string;
   category: SkillCategory;
   level: SkillLevel;
+
   icon?: string;
+
+  featured?: boolean;
+
+  years?: number;
 }
