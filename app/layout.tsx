@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
+
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,16 +17,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ava-91.github.io"),
+  metadataBase: new URL("https://cozyfolio.vercel.app"),
+
   title: {
     default: "Cozyfolio",
     template: "%s • Cozyfolio",
   },
+
   description:
     "A cozy portfolio built with Next.js, TypeScript, Tailwind CSS, and Framer Motion. Crafted with late-night ideas, smooth animations, and lots of coffee.",
+
   applicationName: "Cozyfolio",
+
   authors: [{ name: "Ava" }],
   creator: "Ava",
+
   keywords: [
     "Portfolio",
     "Next.js",
@@ -34,6 +43,7 @@ export const metadata: Metadata = {
     "UI",
     "GitHub",
   ],
+
   openGraph: {
     title: "Cozyfolio",
     description:
@@ -42,6 +52,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+
   robots: {
     index: true,
     follow: true,
@@ -59,8 +70,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}
       suppressHydrationWarning
     >
-      <body className="bg-[#0D1117] text-[#E6EDF3] antialiased selection:bg-sky-500/30 selection:text-white">
+      <body className="min-h-screen bg-background text-text">
+        <Navbar />
+
         {children}
+
+        <Footer />
       </body>
     </html>
   );
