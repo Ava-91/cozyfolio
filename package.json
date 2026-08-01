@@ -15,7 +15,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@icons-pack/react-simple-icons": "^13.11.1",
+    "@icons-pack/react-simple-icons": "^13.13.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.43.0",
     "lucide-react": "^1.28.0",
