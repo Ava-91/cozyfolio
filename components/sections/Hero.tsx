@@ -11,17 +11,14 @@ const technologies = [
 
 export default function Hero() {
   return (
-    <section>
+    <section className="min-h-screen flex items-center justify-center px-4 pt-24">
       <FadeIn>
         <div className="text-center">
-
           {/* Status */}
           <div className="mb-6 flex items-center justify-center gap-2 text-sm text-muted">
             <span className="h-2 w-2 rounded-full bg-primary" />
             Currently building cozy things on the internet
           </div>
-
-
           {/* Heading */}
           <h1 className="text-5xl font-semibold leading-tight tracking-tight md:text-7xl lg:text-8xl">
             Hi, I'm{" "}
@@ -29,15 +26,11 @@ export default function Hero() {
               Ava
             </span>
           </h1>
-
-
           {/* Short description */}
           <p className="mt-6 text-xl text-muted md:text-2xl">
             Frontend-first developer building calm,
             minimal and thoughtful web experiences.
           </p>
-
-
           {/* Long description */}
           <p className="mx-auto mt-8 max-w-2xl text-base leading-8 text-muted md:text-lg">
             I'm passionate about crafting interfaces that feel
@@ -45,11 +38,8 @@ export default function Hero() {
             Next.js, TypeScript, React and building projects one
             commit at a time.
           </p>
-
-
           {/* Buttons */}
           <div className="mt-12 flex flex-wrap justify-center gap-4">
-
             <Link href="#projects">
               <Button variant="primary" size="lg">
                 View Projects
@@ -64,8 +54,6 @@ export default function Hero() {
             </Link>
 
           </div>
-
-
           {/* Tech stack */}
           <div className="mt-12 flex flex-wrap justify-center gap-3 text-sm">
             {technologies.map((tech) => (
@@ -85,7 +73,6 @@ export default function Hero() {
               </span>
             ))}
           </div>
-
         </div>
       </FadeIn>
     </section>
