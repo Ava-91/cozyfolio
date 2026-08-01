@@ -1,101 +1,187 @@
 # 🌙 Cozyfolio
 
-> Building cozy internet things, one commit at a time.
+> A cozy developer portfolio built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.
 
-A personal portfolio built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
+Cozyfolio is my personal portfolio website — a place where I showcase my projects, skills, and the things I build while learning and growing as a developer.
 
-Instead of filling the page with flashy effects, I wanted something simple, smooth, and cozy. Think late-night coding, subtle animations, clean layouts, and tiny details that make the experience feel nice.
+I wanted to create something that feels different from typical developer portfolios: not overloaded with flashy effects, but calm, clean, and enjoyable to explore.
+
+Think late-night coding sessions, soft animations, thoughtful interactions, and small details that make the experience feel personal. ✨
 
 ---
 
 ## ✨ Features
 
-- 🌙 GitHub-inspired dark theme
-- 💙 Cozy blue color palette
-- 📱 Fully responsive
-- ⚡ Smooth animations
-- 🎨 Reusable components
-- 🧩 Clean project structure
-- 🚀 Built with the App Router
+* 🌙 GitHub-inspired dark aesthetic
+* 💙 Cozy blue color palette
+* 📱 Fully responsive design
+* ⚡ Smooth animations and transitions
+* 🎨 Reusable React components
+* 🧩 Clean and scalable project structure
+* 🚀 Next.js App Router architecture
+* 🖼️ Dynamic Open Graph image generation
+* 🔍 SEO-friendly setup
+* 🛡️ Automated security and dependency monitoring
+* ✅ Continuous integration with GitHub Actions
 
 ---
 
 ## 🛠️ Tech Stack
 
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-- Lucide React
+### Frontend
+
+*  Next.js
+* ⚛️ React
+* 📘 TypeScript
+* 🎨 Tailwind CSS
+* 🎞️ Framer Motion
+* 🧩 Lucide React
+
+### Developer Tools
+
+* 📦 npm
+* 🧹 ESLint
+* ✨ Prettier
+* 🤖 GitHub Actions
+* 🔒 Dependabot
+* 🛡️ CodeQL
 
 ---
 
 ## 📂 Project Structure
 
-```text
-app/
-components/
-constants/
-lib/
-public/
-types/
+```
+cozyfolio/
+│
+├── app/              # Next.js App Router pages and layouts
+├── components/       # Reusable UI components
+├── constants/        # Static data and configuration
+├── lib/              # Utility functions
+├── public/           # Images and static assets
+├── types/            # TypeScript definitions
+│
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   ├── workflows/
+│   └── pull_request_template.md
+│
+└── package.json
 ```
 
-The project is organized to keep components reusable, data separate from the UI, and future updates easy.
+The project is structured to keep UI components reusable, data organized, and future improvements easier to maintain.
 
 ---
 
-## 🚧 Current Status
+## 🚧 Project Status
 
-Still a work in progress!
+🟢 Active development
 
-I'll keep improving it over time as I learn new things and build more projects.
+Cozyfolio is continuously evolving as I learn new technologies, improve my design skills, and create more projects.
+
+Future improvements may include:
+
+* More portfolio sections
+* Additional project showcases
+* New animations and interactions
+* Performance improvements
+* More customization options
 
 ---
 
 ## 💡 Why "Cozyfolio"?
 
-Because I love websites that feel calm instead of overwhelming.
+Many developer portfolios focus on being extremely flashy.
 
-No rainbow gradients.
-No spinning cubes.
-Just clean design, thoughtful interactions, and a little bit of personality.
+I wanted something else.
+
+No unnecessary effects.
+No overwhelming layouts.
+No distracting animations.
+
+Just:
+
+* clean design
+* smooth interactions
+* meaningful content
+* a little personality
+
+A portfolio that feels comfortable to visit. 🌙
 
 ---
 
 ## 🚀 Getting Started
 
-Clone the repository:
+### Clone the repository
 
 ```bash
 git clone https://github.com/Ava-91/cozyfolio.git
 ```
 
-Install dependencies:
+### Install dependencies
 
 ```bash
 npm install
 ```
 
-Start the development server:
+### Start the development server
 
 ```bash
 npm run dev
 ```
 
-Then open:
+Open:
 
-```text
+```
 http://localhost:3000
 ```
 
 ---
 
-## 📬 Connect With Me
+## 📜 Available Scripts
 
-If you have ideas, feedback, or just want to say hi, feel free to reach out or check out my other projects on GitHub.
+| Command            | Description                   |
+| ------------------ | ----------------------------- |
+| `npm run dev`      | Start development server      |
+| `npm run build`    | Create production build       |
+| `npm run start`    | Start production server       |
+| `npm run lint`     | Check code quality            |
+| `npm run lint:fix` | Automatically fix lint issues |
+| `npm run format`   | Format code with Prettier     |
 
 ---
 
-Made with ☕, 🎧, and way too many late-night commits.
+## 🤝 Contributing
+
+Suggestions, bug reports, and improvements are welcome!
+
+If you find an issue or have an idea:
+
+1. Open an issue
+2. Describe the problem or suggestion
+3. Create a pull request if you want to contribute
+
+Please check the contribution guidelines before submitting changes.
+
+---
+
+## 🔒 Security
+
+Security is taken seriously.
+
+If you discover a vulnerability, please check the security policy:
+
+`SECURITY.md`
+
+---
+
+## 📬 Connect
+
+Want to share feedback, discuss ideas, or see more projects?
+
+Check out my GitHub profile:
+
+https://github.com/Ava-91
+
+---
+
+Made with ☕, 🎧, curiosity, and a lot of commits. 🌙
