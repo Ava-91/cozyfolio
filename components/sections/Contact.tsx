@@ -71,7 +71,7 @@ const Contact = () => {
           align="center"
           subtitle="Questions, collaboration or just saying hi — my inbox is always open."
         >
-          Let's <span className="text-primary">Connect</span>
+          Let’s <span className="text-primary">Connect</span>
         </SectionTitle>
 
         <motion.div

@@ -21,7 +21,7 @@ export default function Hero() {
           </div>
           {/* Heading */}
           <h1 className="text-5xl font-semibold leading-tight tracking-tight md:text-7xl lg:text-8xl">
-            Hi, I'm{" "}
+            Hi, I’m{" "}
             <span className="text-primary">
               Ava
             </span>
@@ -33,7 +33,7 @@ export default function Hero() {
           </p>
           {/* Long description */}
           <p className="mx-auto mt-8 max-w-2xl text-base leading-8 text-muted md:text-lg">
-            I'm passionate about crafting interfaces that feel
+            I’m passionate about crafting interfaces that feel
             clean, modern and enjoyable to use. Currently exploring
             Next.js, TypeScript, React and building projects one
             commit at a time.

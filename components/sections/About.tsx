@@ -23,7 +23,7 @@ const About = () => {
         >
           <Card className="space-y-6">
             <p className="leading-8 text-text">
-              Hi! I'm Ava, a student and aspiring full-stack developer who loves
+              Hi! I’m Ava, a student and aspiring full-stack developer who loves
               building websites that feel clean, cozy and enjoyable to use. I
               spend most of my free time experimenting with new technologies,
               improving old projects and learning something new every day.
@@ -31,13 +31,13 @@ const About = () => {
 
             <p className="leading-8 text-text">
               My coding journey started with simple visual programming and later
-              grew into HTML, CSS and JavaScript. Today I'm focused on React,
+              grew into HTML, CSS and JavaScript. Today I’m focused on React,
               Next.js, TypeScript and creating interfaces that balance good
               design with solid code.
             </p>
 
             <p className="leading-8 text-text">
-              Outside of programming you'll usually find me listening to music,
+              Outside of programming you’ll usually find me listening to music,
               customizing my development setup, organizing GitHub repositories,
               or turning random ideas into little side projects.
             </p>
