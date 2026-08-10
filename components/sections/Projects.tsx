@@ -12,7 +12,7 @@ const Projects = () => {
       <div className="container max-w-6xl">
         <SectionTitle
           align="center"
-          subtitle="Things I've built while learning, breaking, fixing, and rebuilding."
+          subtitle="Things I&apos;ve built while learning, breaking, fixing, and rebuilding."
         >
           My <span className="text-primary">Projects</span>
         </SectionTitle>
