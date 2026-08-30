@@ -12,9 +12,9 @@ const Projects = () => {
       <div className="container max-w-6xl">
         <SectionTitle
           align="center"
-          subtitle="Things I&apos;ve built while learning, breaking, fixing, and rebuilding."
+          subtitle="A mix of polished interfaces, local-first tools, and oddly specific ideas I decided deserved software."
         >
-          My <span className="text-primary">Projects</span>
+          Things I&apos;ve <span className="text-primary">Built</span>
         </SectionTitle>
 
         <motion.div
