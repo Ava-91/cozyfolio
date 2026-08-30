@@ -89,17 +89,27 @@ const ProjectCard = ({
 
         <div className="flex flex-wrap items-center gap-2">
           {liveUrl && (
-            <Link href={liveUrl} target="_blank" rel="noopener noreferrer">
+            <Link
+              href={liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open the live ${title} project`}
+            >
               <Button variant="primary" size="md">
-                <ExternalLink className="h-4 w-4" />
+                <ExternalLink className="h-4 w-4" aria-hidden="true" />
                 Live
               </Button>
             </Link>
           )}
           {githubUrl && (
-            <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
+            <Link
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${title} source code on GitHub`}
+            >
               <Button variant="ghost" size="md">
-                <SiGithub className="h-4 w-4" />
+                <SiGithub className="h-4 w-4" aria-hidden="true" />
                 Code
               </Button>
             </Link>
