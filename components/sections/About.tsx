@@ -17,7 +17,7 @@ const technologies = [
 
 const About = () => {
   return (
-    <section id="about" className="py-24 px-4">
+    <section id="about" className="px-4 py-24">
       <div className="container max-w-4xl">
         <SectionTitle
           subtitle="A little about the person behind the commits."
@@ -54,7 +54,10 @@ const About = () => {
               has more engineering underneath than you might expect.
             </p>
 
-            <div className="flex flex-wrap gap-2 pt-2" aria-label="Technologies and tools">
+            <div
+              className="flex flex-wrap gap-2 pt-2"
+              aria-label="Technologies and tools"
+            >
               {technologies.map((item) => (
                 <span
                   key={item}
