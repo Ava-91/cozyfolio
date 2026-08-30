@@ -4,6 +4,17 @@ import { motion } from "framer-motion";
 import Card from "@/components/ui/Card";
 import SectionTitle from "@/components/ui/SectionTitle";
 
+const technologies = [
+  "Next.js",
+  "TypeScript",
+  "React",
+  "Tailwind CSS",
+  "Python",
+  "Git & GitHub",
+  "UI Design",
+  "WordPress",
+];
+
 const About = () => {
   return (
     <section id="about" className="py-24 px-4">
@@ -23,35 +34,28 @@ const About = () => {
         >
           <Card className="space-y-6">
             <p className="leading-8 text-text">
-              Hi! I’m Ava, a student and aspiring full-stack developer who loves
-              building websites that feel clean, cozy and enjoyable to use. I
-              spend most of my free time experimenting with new technologies,
-              improving old projects and learning something new every day.
+              Hi! I’m Ava. I like making software that solves annoyingly specific
+              problems, whether that means a polished interface, a local-first
+              utility, or a tiny tool that makes an everyday workflow less
+              frustrating.
             </p>
 
             <p className="leading-8 text-text">
-              My coding journey started with simple visual programming and later
-              grew into HTML, CSS and JavaScript. Today I’m focused on React,
-              Next.js, TypeScript and creating interfaces that balance good
-              design with solid code.
+              I started with visual programming and gradually moved through HTML,
+              CSS and JavaScript into React, Next.js, TypeScript and Python. These
+              days I enjoy exploring the space between thoughtful UI and the
+              behind-the-scenes engineering that makes a project dependable.
             </p>
 
             <p className="leading-8 text-text">
-              Outside of programming you’ll usually find me listening to music,
-              customizing my development setup, organizing GitHub repositories,
-              or turning random ideas into little side projects.
+              Outside of coding, I’m usually listening to music, customizing my
+              setup, organizing digital things, or turning a random idea into a
+              side project. I especially like software that feels calm to use but
+              has more engineering underneath than you might expect.
             </p>
 
-            <div className="flex flex-wrap gap-2 pt-2">
-              {[
-                "Next.js",
-                "TypeScript",
-                "React",
-                "Tailwind CSS",
-                "WordPress",
-                "UI Design",
-                "Git & GitHub",
-              ].map((item) => (
+            <div className="flex flex-wrap gap-2 pt-2" aria-label="Technologies and tools">
+              {technologies.map((item) => (
                 <span
                   key={item}
                   className="rounded-full border border-border bg-surface/50 px-3 py-1 text-xs text-muted"
