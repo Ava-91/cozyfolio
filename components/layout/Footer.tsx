@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SiGithub, SiTelegram } from "@icons-pack/react-simple-icons";
 import { Mail } from "lucide-react";
 import { socials, SocialLink } from "../constants/socials";
+import { githubStats } from "../constants/github";
 
 const iconMap = { github: SiGithub, telegram: SiTelegram, email: Mail };
 
@@ -19,11 +20,11 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-muted">
-            <span>13 public repositories</span>
+            <span>{githubStats.repositories}</span>
             <span aria-hidden="true">·</span>
-            <span>300+ commits</span>
+            <span>{githubStats.commits}</span>
             <Link
-              href="https://github.com/Ava-91"
+              href={githubStats.profileUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-text transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
