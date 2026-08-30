@@ -13,6 +13,7 @@ export interface ProjectCardProps {
   tags: string[];
   liveUrl?: string;
   githubUrl?: string;
+  featured?: boolean;
   className?: string;
 }
 
@@ -23,18 +24,25 @@ const ProjectCard = ({
   tags,
   liveUrl,
   githubUrl,
+  featured = false,
   className,
 }: ProjectCardProps) => {
   return (
     <div
       className={cn(
-        "group bg-surface border border-border rounded-2xl overflow-hidden transition-all duration-300",
-        "hover:border-primary/30 hover:shadow-[0_8px_30px_rgb(0,0,0,0.3)] hover:-translate-y-1",
+        "group overflow-hidden rounded-2xl border border-border bg-surface transition-all duration-300",
+        "hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_8px_30px_rgb(0,0,0,0.3)]",
+        featured && "border-primary/20",
         className
       )}
     >
       {/* Image */}
-      <div className="relative w-full aspect-video bg-background overflow-hidden">
+      <div
+        className={cn(
+          "relative w-full overflow-hidden bg-background",
+          featured ? "aspect-[2.4/1]" : "aspect-video"
+        )}
+      >
         {image ? (
           <Image
             src={image}
@@ -43,31 +51,31 @@ const ProjectCard = ({
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-muted">
-            <svg
-              className="w-16 h-16 opacity-20"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1}
-                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-              />
-            </svg>
+          <div className="flex h-full w-full items-center justify-center bg-surface px-6">
+            <div className="text-center">
+              <span className="text-4xl font-semibold tracking-tight text-primary/60">
+                {title.slice(0, 1).toUpperCase()}
+              </span>
+              <p className="mt-2 text-sm font-medium text-muted">{title}</p>
+            </div>
           </div>
         )}
       </div>
 
       {/* Content */}
-      <div className="p-6">
-        <h3 className="text-lg font-semibold text-text mb-2">{title}</h3>
-        <p className="text-muted text-sm mb-4 line-clamp-2">{description}</p>
+      <div className={cn("p-6", featured && "md:p-7")}>
+        <div className="mb-2 flex items-center gap-2">
+          <h3 className="text-lg font-semibold text-text">{title}</h3>
+          {featured && (
+            <span className="rounded-full border border-primary/20 bg-primary/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-primary">
+              Featured
+            </span>
+          )}
+        </div>
+        <p className="mb-4 line-clamp-2 text-sm text-muted">{description}</p>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
+        <div className="mb-4 flex flex-wrap gap-1.5">
           {tags.map((tag) => (
             <Badge key={tag} variant="default">
               {tag}
@@ -80,7 +88,7 @@ const ProjectCard = ({
           {liveUrl && (
             <Link href={liveUrl} target="_blank" rel="noopener noreferrer">
               <Button variant="primary" size="md">
-                <ExternalLink className="w-4 h-4" />
+                <ExternalLink className="h-4 w-4" />
                 Live
               </Button>
             </Link>
