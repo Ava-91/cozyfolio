@@ -61,7 +61,7 @@ const About = () => {
               {technologies.map((item) => (
                 <span
                   key={item}
-                  className="rounded-full border border-border bg-surface/50 px-3 py-1 text-xs text-muted"
+                  className="rounded-full border border-border bg-surface/50 px-3 py-1 text-xs text-muted transition-colors hover:border-primary/30 hover:text-text"
                 >
                   {item}
                 </span>
