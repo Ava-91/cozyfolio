@@ -14,6 +14,7 @@ export interface ProjectCardProps {
   liveUrl?: string;
   githubUrl?: string;
   featured?: boolean;
+  preview?: { eyebrow: string; steps: string[] };
   className?: string;
 }
 
@@ -25,6 +26,7 @@ const ProjectCard = ({
   liveUrl,
   githubUrl,
   featured = false,
+  preview,
   className,
 }: ProjectCardProps) => {
   return (
@@ -54,6 +56,26 @@ const ProjectCard = ({
             sizes={featured ? "(max-width: 768px) 100vw, 1200px" : "(max-width: 768px) 100vw, 50vw"}
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
+        ) : preview ? (
+          <div className="flex h-full flex-col justify-between bg-gradient-to-br from-surface to-background p-6 md:p-8">
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-primary/80">{preview.eyebrow}</p>
+              <div className="mt-5 h-px w-full bg-border" />
+            </div>
+
+            <div className="grid gap-2 sm:grid-cols-3">
+              {preview.steps.map((step, index) => (
+                <div
+                  key={step}
+                  className="animate-pulse rounded-xl border border-border bg-background/60 p-3"
+                  style={{ animationDelay: `${index * 350}ms` }}
+                >
+                  <span className="text-[10px] text-muted">0{index + 1}</span>
+                  <p className="mt-1 text-sm font-medium text-text">{step}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-surface px-6">
             <div className="text-center">
@@ -89,29 +111,13 @@ const ProjectCard = ({
 
         <div className="flex flex-wrap items-center gap-2">
           {liveUrl && (
-            <Link
-              href={liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Open the live ${title} project`}
-            >
-              <Button variant="primary" size="md">
-                <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                Live
-              </Button>
+            <Link href={liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open the live ${title} project`}>
+              <Button variant="primary" size="md"><ExternalLink className="h-4 w-4" aria-hidden="true" />Live</Button>
             </Link>
           )}
           {githubUrl && (
-            <Link
-              href={githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`View ${title} source code on GitHub`}
-            >
-              <Button variant="ghost" size="md">
-                <SiGithub className="h-4 w-4" aria-hidden="true" />
-                Code
-              </Button>
+            <Link href={githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${title} source code on GitHub`}>
+              <Button variant="ghost" size="md"><SiGithub className="h-4 w-4" aria-hidden="true" />Code</Button>
             </Link>
           )}
         </div>

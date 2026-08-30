@@ -8,8 +8,12 @@ export const projects: Project[] = [
     image: "",
     tags: ["Next.js", "TypeScript", "GitHub API"],
     githubUrl: "https://github.com/Ava-91/reposhot",
-    liveUrl: "",
+    liveUrl: "https://reposhot.vercel.app",
     featured: true,
+    status: "Active",
+    preview: { eyebrow: "Repository → shareable visual", steps: ["Paste a repo", "Customize the card", "Export PNG"] },
+    problem: "GitHub repository links are useful but visually bland when shared.",
+    solution: "RepoShot turns repository metadata into polished, customizable shareable cards.",
   },
   {
     title: "VibeSorter",
@@ -20,6 +24,10 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/Ava-91/VibeSorter",
     liveUrl: "",
     featured: true,
+    status: "Active",
+    preview: { eyebrow: "Images → visual vibes", steps: ["Scan locally", "Score confidence", "Review groups"] },
+    problem: "Large image collections are easy to accumulate and difficult to organize by feeling.",
+    solution: "VibeSorter analyzes visual characteristics and proposes reviewable vibe-based organization.",
   },
   {
     title: "music-sync",
@@ -30,6 +38,10 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/Ava-91/music-sync",
     liveUrl: "",
     featured: true,
+    status: "Active",
+    preview: { eyebrow: "Two libraries → one safe merge", steps: ["Compare", "Review conflicts", "Backup + merge"] },
+    problem: "Merging two music libraries can silently overwrite metadata or artwork.",
+    solution: "music-sync compares libraries conservatively and requires review before uncertain merges.",
   },
   {
     title: "Luna",
@@ -39,6 +51,8 @@ export const projects: Project[] = [
     tags: ["Python", "SQLite", "CLI"],
     githubUrl: "https://github.com/Ava-91/luna",
     liveUrl: "",
+    status: "Active",
+    preview: { eyebrow: "Messy library → clean library", steps: ["Index", "Audit", "Apply reversible fixes"] },
   },
   {
     title: "Ava Night",
@@ -48,6 +62,7 @@ export const projects: Project[] = [
     tags: ["VS Code", "Theme API", "JSON"],
     githubUrl: "https://github.com/Ava-91/ava-night",
     liveUrl: "",
+    status: "Maintained",
   },
   {
     title: "MusicPlayer",
@@ -57,5 +72,6 @@ export const projects: Project[] = [
     tags: ["Next.js", "React", "TypeScript"],
     githubUrl: "https://github.com/Ava-91/MusicPlayer",
     liveUrl: "",
+    status: "Completed",
   },
 ];
