@@ -1,7 +1,8 @@
 import Hero from "../components/sections/Hero";
 import About from "../components/sections/About";
-import Skills from "../components/sections/Skills";
 import WhyIBuild from "../components/sections/WhyIBuild";
+import CurrentlyBuilding from "../components/sections/CurrentlyBuilding";
+import Skills from "../components/sections/Skills";
 import Projects from "../components/sections/Projects";
 import Contact from "../components/sections/Contact";
 
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero />
       <About />
       <WhyIBuild />
+      <CurrentlyBuilding />
       <Skills />
       <Projects />
       <Contact />
