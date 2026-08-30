@@ -8,7 +8,7 @@ import type { Project } from "@/types/project";
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 px-4">
+    <section id="projects" className="px-4 py-20">
       <div className="container max-w-6xl">
         <SectionTitle
           align="center"
@@ -22,7 +22,7 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2"
         >
           {projects.map((project: Project, index: number) => (
             <motion.div
@@ -31,6 +31,7 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               viewport={{ once: true }}
+              className={project.featured ? "md:col-span-2" : ""}
             >
               <ProjectCard
                 title={project.title}
@@ -39,6 +40,7 @@ const Projects = () => {
                 tags={project.tags}
                 liveUrl={project.liveUrl}
                 githubUrl={project.githubUrl}
+                featured={project.featured}
               />
             </motion.div>
           ))}
