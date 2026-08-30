@@ -15,10 +15,16 @@ export default function Hero() {
       <FadeIn>
         <div className="text-center">
           {/* Status */}
-          <div className="mb-6 flex items-center justify-center gap-2 text-sm text-muted">
+          <Link
+            href="https://github.com/Ava-91/music-sync"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mb-6 inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface/40 px-4 py-2 text-sm text-muted transition-colors hover:border-primary/40 hover:text-text"
+            aria-label="View the music-sync project on GitHub"
+          >
             <span className="h-2 w-2 rounded-full bg-primary" />
             Currently building music-sync
-          </div>
+          </Link>
           {/* Heading */}
           <h1 className="text-5xl font-semibold leading-tight tracking-tight md:text-7xl lg:text-8xl">
             Hi, I’m{" "}
@@ -48,7 +54,7 @@ export default function Hero() {
             </Link>
           </div>
           {/* Tech stack */}
-          <div className="mt-12 flex flex-wrap justify-center gap-3 text-sm">
+          <div className="mt-12 flex flex-wrap justify-center gap-3 text-sm" aria-label="Technologies">
             {technologies.map((tech) => (
               <span
                 key={tech}
